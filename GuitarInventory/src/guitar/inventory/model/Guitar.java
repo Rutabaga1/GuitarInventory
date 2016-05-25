@@ -2,12 +2,12 @@ package guitar.inventory.model;
 
 public class Guitar {
 	private String serialNumber;
-	private String gType;//GuitarType 的简写
+	private String gType;//GuitarType的简写
 	private Double price;
 	private String gSize;
 	private String color;
 	private String seller;
-	private int inventoryNum;
+	private int inventoryNum;//大于0表明仓库中有存货
 	
 	
 	public String getSerialNumber() {

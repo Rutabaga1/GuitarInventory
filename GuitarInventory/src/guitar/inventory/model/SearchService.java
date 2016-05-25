@@ -27,9 +27,12 @@ public class SearchService {
     	return guitarDAO.getGuitars();
 	}
     
-    public List<Guitar> getGuitars(Guitar userGuitar) {
+    /*public List<Guitar> getGuitars(Guitar userGuitar) {
     	return guitarDAO.getGuitars(userGuitar);
 	}
+	public List<Guitar> getInventoryGuitars() {
+		return guitarDAO.getInventoryGuitars();
+	}*/
     
     
     

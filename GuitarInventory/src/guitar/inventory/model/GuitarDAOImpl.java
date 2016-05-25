@@ -61,7 +61,7 @@ public class GuitarDAOImpl implements GuitarDAO{
 		return administrators;
 	}
 	
-	@Override
+	/*@Override
 	public List<Guitar> getGuitars(Guitar userGuitar) {
 		Connection conn=null;
 		PreparedStatement stmt=null;
@@ -72,8 +72,8 @@ public class GuitarDAOImpl implements GuitarDAO{
 		try{
 			conn=datasource.getConnection();
 			stmt=conn.prepareStatement("SELECT Cname,Cplace FROM Guitar");
-			/*stmt.setString(1, admin.getCname());
-			stmt.setString(2, admin.getCplace());*/
+			stmt.setString(1, admin.getCname());
+			stmt.setString(2, admin.getCplace());
 			ResultSet rs=stmt.executeQuery();
 			administrators=new ArrayList<Guitar>();
 			while(rs.next()){
@@ -103,5 +103,5 @@ public class GuitarDAOImpl implements GuitarDAO{
 			}
 			}
 		return administrators;
-	}
+	}*/
 }
