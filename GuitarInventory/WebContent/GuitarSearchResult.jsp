@@ -1,4 +1,4 @@
-<%@ page import="guitar.inventory.model.SearchService,guitar.inventory.model.Guitar,java.util.List" language="java" contentType="text/html; charset=UTF-8"
+﻿<%@ page import="guitar.inventory.model.SearchService,guitar.inventory.model.Guitar,java.util.List" language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -124,7 +124,7 @@
 		   			<td align="center"><strong>品牌</strong></td>
 		   		</tr>
 		   		<tr>
-		   			<td colspan="5"><hr size="1" /></td>
+		   			<td colspan="6"><hr size="1" /></td>
 		   		</tr>
 
 		   		
