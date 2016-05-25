@@ -1,16 +1,10 @@
 package guitar.inventory.model;
 
 public class Inventory {
-	private String serialNumber;
+	private String series;
 	private int gnumber;
 	private String position;
 	
-	public String getSerialNumber() {
-		return serialNumber;
-	}
-	public void setSerialNumber(String serialNumber) {
-		this.serialNumber = serialNumber;
-	}
 	public int getGnumber() {
 		return gnumber;
 	}
@@ -22,5 +16,11 @@ public class Inventory {
 	}
 	public void setPosition(String position) {
 		this.position = position;
+	}
+	public String getSeries() {
+		return series;
+	}
+	public void setSeries(String series) {
+		this.series = series;
 	}
 }

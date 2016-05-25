@@ -27,7 +27,7 @@ public class GuitarDAOImpl implements GuitarDAO{
 		//int cccc=0;
 		try{
 			conn=datasource.getConnection();
-			stmt=conn.prepareStatement("SELECT gType,price,gSize,color,seller FROM Guitar where inventoryNum>0");
+			stmt=conn.prepareStatement("SELECT gSeries,gType,gPrice,gSize,gColor,gSeller FROM Guitar where inventoryNum!=0");
 			/*stmt.setString(1, admin.getCname());
 			stmt.setString(2, admin.getCplace());*/
 			ResultSet rs=stmt.executeQuery();
@@ -35,11 +35,11 @@ public class GuitarDAOImpl implements GuitarDAO{
 			while(rs.next()){
 				guitar=new Guitar();
 				guitar.setGType(rs.getString("gType"));
-				guitar.setPrice(rs.getDouble("price"));
+				guitar.setGPrice(rs.getString("gPrice"));
 				guitar.setGSize(rs.getString("gSize"));
-				guitar.setColor(rs.getString("color"));
-				guitar.setSeller(rs.getString("seller"));
-				
+				guitar.setGColor(rs.getString("gColor"));
+				guitar.setGSeller(rs.getString("gSeller"));
+				guitar.setGSeries(rs.getString("gSeries"));
 				Guitars.add(guitar);
 				
 			}

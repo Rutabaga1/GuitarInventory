@@ -1,34 +1,16 @@
 package guitar.inventory.model;
 
 public class Guitar {
-	private String series;
+	private String gSeries;
 	private String gType;//GuitarType的简写
-	private Double price;
+	private String gPrice;
 	private String gSize;
-	private String color;
-	private String seller;
-	private int inventoryNum;//大于0表明仓库中有存货
+	private String gColor;
+	private String gSeller;
+	private String inventoryNum;//大于0表明仓库中有存货
 	
 	
-	public Double getPrice() {
-		return price;
-	}
-	public void setPrice(Double price) {
-		this.price = price;
-	}
 	
-	public String getColor() {
-		return color;
-	}
-	public void setColor(String color) {
-		this.color = color;
-	}
-	public String getSeller() {
-		return seller;
-	}
-	public void setSeller(String seller) {
-		this.seller = seller;
-	}
 	
 	public String getGSize() {
 		return gSize;
@@ -42,17 +24,36 @@ public class Guitar {
 	public void setGType(String gType) {
 		this.gType = gType;
 	}
-	public int getInventoryNum() {
+	public String getInventoryNum() {
 		return inventoryNum;
 	}
-	public void setInventoryNum(int inventoryNum) {
+	public void setInventoryNum(String inventoryNum) {
 		this.inventoryNum = inventoryNum;
 	}
-	public String getSeries() {
-		return series;
+	
+	public String getGSeries() {
+		return gSeries;
 	}
-	public void setSeries(String series) {
-		this.series = series;
+	public void setGSeries(String gSeries) {
+		this.gSeries = gSeries;
+	}
+	public String getGPrice() {
+		return gPrice;
+	}
+	public void setGPrice(String gPrice) {
+		this.gPrice = gPrice;
+	}
+	public String getGColor() {
+		return gColor;
+	}
+	public void setGColor(String gColor) {
+		this.gColor = gColor;
+	}
+	public String getGSeller() {
+		return gSeller;
+	}
+	public void setGSeller(String gSeller) {
+		this.gSeller = gSeller;
 	}
 	
 }

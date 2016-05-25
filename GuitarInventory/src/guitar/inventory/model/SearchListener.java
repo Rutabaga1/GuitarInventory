@@ -42,7 +42,7 @@ public class SearchListener implements ServletContextListener {
 			Context envContext=(Context)inticontext.lookup("java:/comp/env");
 			DataSource dataSource=(DataSource)envContext.lookup("jdbc/sql1");
 			ServletContext context=arg0.getServletContext();
-			context.setAttribute("searchService", new SearchService(new GuitarDAOImpl(dataSource),new InventoryDAOImpl(dataSource)));
+			context.setAttribute("searchService", new SearchService(new GuitarDAOImpl(dataSource)));
 			//int i=0;
 		}catch(NamingException e){
 			throw new RuntimeException(e);

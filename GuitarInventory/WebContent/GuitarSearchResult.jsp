@@ -1,5 +1,6 @@
 <%@ page import="guitar.inventory.model.SearchService,guitar.inventory.model.Guitar,java.util.List" language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -11,12 +12,6 @@
 </head>
 
 <body>
-
-
-<%
-	SearchService userService = (SearchService) getServletContext().getAttribute("searchService");
-	List<Guitar> GuitarList=userService.getGuitars();
-%>
 
  <div id="top-line"></div>
 
@@ -55,15 +50,15 @@
 		   		</tr>
 		  <tr> <td colspan="5"> 
 			
-				<input type="radio" name="search" value="01" checked="checked"><strong><font color="red">全部吉他</font></strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<input type="radio" name="search" value="01"><strong>全部吉他</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			
 			 <hr size="1" />
 			<br /> 
 			</td></tr>
 		    
 		   		<tr>
-		   			<td rowspan="2"><input type="radio" name="search" value="02"><strong>筛选</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-		   			<td>类型：&nbsp;<input type="text" name="gType" />&nbsp;</td>
+		   			<td rowspan="2"><input type="radio" name="search" value="02" checked="checked"><strong>筛选</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+		   			<td>类型：&nbsp;<input type="text" name="gType" value="${requestScope.gType }" />&nbsp;</td>
 		   			<td>价格：&nbsp;
 		   				<select name="price" size="1">
 		   					<option value="300">300以下</option>
@@ -86,7 +81,7 @@
 		   			
 		   		</tr>
 		   		<tr>
-		   			<td>颜色：&nbsp;<input type="text" name="color" maxlength="2" />&nbsp;</td>
+		   			<td>颜色：&nbsp;<input type="text" name="color" maxlength="2" value="${requestScope.color }" />&nbsp;</td>
 		   			
 		   			<td colspan="3">品牌：&nbsp;
 		   			<select name="seller" size="1">
@@ -118,6 +113,9 @@
 		<table>
 			<tbody>
 				<tr>
+		   			<td colspan="6">您选择的是：</td>
+		   		</tr>
+				<tr>
 					<td align="center"><strong>图片</strong></td>
 		   			<td align="center"><strong>类型</strong></td>
 		   			<td align="center"><strong>价格</strong></td>
@@ -126,23 +124,20 @@
 		   			<td align="center"><strong>品牌</strong></td>
 		   		</tr>
 		   		<tr>
-		   			<td colspan="6"><hr size="1" /></td>
+		   			<td colspan="5"><hr size="1" /></td>
 		   		</tr>
-		   	<%
-		   		for (int i = 0; i < GuitarList.size(); i++) {
-		   			Guitar guitar=GuitarList.get(i);
-		   	%>
+
 		   		
-		   		<tr height="140px">
-		   			<td width="180px"><img src="images/<%=guitar.getGSeries() %>.jpg" width="130px" height="130px"></td>
-		   			<td align="center" width="100px"><%=guitar.getGType() %></td>
-		   			<td align="center" width="100px"><%=guitar.getGPrice() %></td>
-		   			<td align="center" width="100px"><%=guitar.getGSize() %></td>
-		   			<td align="center" width="100px"><%=guitar.getGColor() %></td>
-		   			<td align="center" width="100px"><%=guitar.getGSeller() %></td>
-		   		</tr>	
-		   		
-		   		<%} %>
+		   	<c:forEach var="oneGuitar" items="${requestScope.theGuitars }">
+		   			<tr height="140px">
+		   				 <td width="180px"><img src="images/${oneGuitar.GSeries}.jpg" width="130px" height="130px"></td> 
+		   				<td align="center" width="100px">${oneGuitar.GType }</td>
+		   				<td align="center" width="100px">${oneGuitar.GPrice }</td>
+		   				<td align="center" width="100px">${oneGuitar.GSize }</td>
+		   				<td align="center" width="100px">${oneGuitar.GColor }</td>
+		   				<td align="center" width="100px">${oneGuitar.GSeller }</td>
+		   			</tr>
+		   		</c:forEach>
 			</tbody>
 		</table>		
 	</div>

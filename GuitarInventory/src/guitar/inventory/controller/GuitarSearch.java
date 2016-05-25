@@ -40,7 +40,7 @@ public class GuitarSearch extends HttpServlet {
 		 String price=request.getParameter("price");
 		 String gSize=request.getParameter("gSize");
 		 //String color=request.getParameter("color");
-		 char color[]=request.getParameter("gType").toCharArray();
+		 char color[]=request.getParameter("color").toCharArray();
 		 String seller=request.getParameter("seller");
 		 //String inventory=request.getParameter("inventory");
 		 
@@ -64,7 +64,7 @@ public class GuitarSearch extends HttpServlet {
 			if(!seller.equals("7")){                               //筛选品牌
 				for (int i = 0; i < GuitarList.size(); i++) {
 					Guitar guitar=GuitarList.get(i);
-					if(guitar.getSeller().equals(seller)){
+					if(guitar.getGSeller().equals(seller)){
 						SellertheGuitars.add(guitar);
 					}
 				}
@@ -84,10 +84,10 @@ public class GuitarSearch extends HttpServlet {
 			if(!price.equals("6")){                               //筛选价格
 				for (int i = 0; i < GSizetheGuitars.size(); i++) {
 					Guitar guitar=GSizetheGuitars.get(i);
-					if(price.equals("601")&&guitar.getPrice()>=Double.valueOf(price)){//区分以上和以下比较
+					if(price.equals("601")&&Double.valueOf(guitar.getGPrice())>=601){//区分以上和以下比较
 						pricetheGuitars.add(guitar);
 					}else{
-						if(guitar.getPrice()<Double.valueOf(price)){
+						if(!price.equals("601")&&Double.valueOf(guitar.getGPrice())<Double.valueOf(price)){
 							pricetheGuitars.add(guitar);
 						}
 					}
@@ -101,7 +101,7 @@ public class GuitarSearch extends HttpServlet {
 					char IType[]=guitar.getGType().toCharArray();
 					labe:for (int j = 0; j < gType.length; j++) {
 						for (int k = 0; k < IType.length; k++) {
-							if(IType[k]==color[j]){//
+							if(IType[k]==gType[j]){//
 								GTypetheGuitars.add(guitar);
 								break labe;
 							}
@@ -114,7 +114,7 @@ public class GuitarSearch extends HttpServlet {
 			if(color.length!=0){                               //筛选颜色
 				for (int i = 0; i < GTypetheGuitars.size(); i++) {
 					Guitar guitar=GTypetheGuitars.get(i);
-					char Icolor[]=guitar.getColor().toCharArray();
+					char Icolor[]=guitar.getGColor().toCharArray();
 					labe:for (int j = 0; j < color.length; j++) {
 						for (int k = 0; k < Icolor.length; k++) {
 							if(Icolor[k]==color[j]){//
@@ -130,8 +130,20 @@ public class GuitarSearch extends HttpServlet {
 		}else{
 			theGuitars=GuitarList;//显示全部吉他
 		}
+		String fullgType="";
+		String fullcolor="";
 		
-		request.getRequestDispatcher("GuitarSearch.jsp").forward(request, response);
+		for (int j = 0; j < color.length; j++) {
+			fullcolor=fullcolor+color[j];
+		}
+		for (int k = 0; k < gType.length; k++) {
+			fullgType=fullgType+gType[k];
+		}
+		
+		request.setAttribute("color", fullcolor);
+		request.setAttribute("gType",fullgType);
+		request.setAttribute("theGuitars", theGuitars);
+		request.getRequestDispatcher("GuitarSearchResult.jsp").forward(request, response);
 		
 		
 	}

@@ -5,34 +5,22 @@ import java.util.List;
 
 public class SearchService {
 	private GuitarDAO guitarDAO;
-	private InventoryDAO inventoryDAO;
 	
 	
-	public SearchService(String WORKS,GuitarDAO guitarDAO,InventoryDAO inventoryDAO) {
-        this(guitarDAO,inventoryDAO);
+	public SearchService(String WORKS,GuitarDAO guitarDAO) {
+        this(guitarDAO);
     }
-    public SearchService(GuitarDAO guitarDAO,InventoryDAO inventoryDAO) {
+    public SearchService(GuitarDAO guitarDAO) {
 		this.guitarDAO=guitarDAO;
-		this.inventoryDAO=inventoryDAO;
+		
 		
 	}
-    
-    
-    public Inventory getInventory(){
-    	return inventoryDAO.getInventory();
-    }
     
     
     public List<Guitar> getGuitars(){
     	return guitarDAO.getGuitars();
 	}
     
-    /*public List<Guitar> getGuitars(Guitar userGuitar) {
-    	return guitarDAO.getGuitars(userGuitar);
-	}
-	public List<Guitar> getInventoryGuitars() {
-		return guitarDAO.getInventoryGuitars();
-	}*/
     
     
     
