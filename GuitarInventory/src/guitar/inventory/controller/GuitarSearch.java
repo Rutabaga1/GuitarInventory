@@ -84,8 +84,12 @@ public class GuitarSearch extends HttpServlet {
 			if(!price.equals("6")){                               //筛选价格
 				for (int i = 0; i < GSizetheGuitars.size(); i++) {
 					Guitar guitar=GSizetheGuitars.get(i);
-					if(guitar.getPrice().equals(price)){
+					if(price.equals("601")&&guitar.getPrice()>=Double.valueOf(price)){//区分以上和以下比较
 						pricetheGuitars.add(guitar);
+					}else{
+						if(guitar.getPrice()<Double.valueOf(price)){
+							pricetheGuitars.add(guitar);
+						}
 					}
 				}
 			}else{
@@ -139,17 +143,4 @@ public class GuitarSearch extends HttpServlet {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
-	
-	public List<Guitar> match(List<Guitar> inventoryGuitars,String search){
-		List<Guitar> theGuitars=new ArrayList<Guitar>();
-		
-		if(search.equals("01")){
-			theGuitars=inventoryGuitars;
-		}else{
-			
-		}
-		
-		return theGuitars;
-	}
-
 }

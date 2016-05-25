@@ -22,24 +22,25 @@ public class GuitarDAOImpl implements GuitarDAO{
 		Connection conn=null;
 		PreparedStatement stmt=null;
 		SQLException ex=null;
-		List<Guitar> administrators=null;
-		Guitar administrator=null;
+		List<Guitar> Guitars=null;
+		Guitar guitar=null;
 		//int cccc=0;
 		try{
 			conn=datasource.getConnection();
-			stmt=conn.prepareStatement("SELECT Cname,Cplace FROM Guitar");
+			stmt=conn.prepareStatement("SELECT gType,price,gSize,color,seller FROM Guitar where inventoryNum>0");
 			/*stmt.setString(1, admin.getCname());
 			stmt.setString(2, admin.getCplace());*/
 			ResultSet rs=stmt.executeQuery();
-			administrators=new ArrayList<Guitar>();
+			Guitars=new ArrayList<Guitar>();
 			while(rs.next()){
-				administrator=new Guitar();
-				administrator.setColor(rs.getString("color"));
-				//administrator.setCplace(rs.getString("Cplace"));
-				//administrator.setDate(admin.getDate());
-				//administrator.setWorkTime(rs.getString("workTime"));
-				//administrator.setShift(rs.getString("shift"));
-				administrators.add(administrator);
+				guitar=new Guitar();
+				guitar.setGType(rs.getString("gType"));
+				guitar.setPrice(rs.getDouble("price"));
+				guitar.setGSize(rs.getString("gSize"));
+				guitar.setColor(rs.getString("color"));
+				guitar.setSeller(rs.getString("seller"));
+				
+				Guitars.add(guitar);
 				
 			}
 			}catch(SQLException e){
@@ -58,7 +59,7 @@ public class GuitarDAOImpl implements GuitarDAO{
 				throw new RuntimeException(ex);
 			}
 			}
-		return administrators;
+		return Guitars;
 	}
 	
 	/*@Override

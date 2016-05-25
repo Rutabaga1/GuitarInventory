@@ -62,8 +62,8 @@
 		   					<option value="300">300以下</option>
 		   					<option value="400">400以下</option>
 		   					<option value="500">500以下</option>
-		   					<option value="599">600以下</option>
-		   					<option value="600">600以上</option>
+		   					<option value="600">600以下</option>
+		   					<option value="601">600以上</option>
 		   					<option value="6" selected="selected">任意</option>
 		   				</select>
 		   			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>

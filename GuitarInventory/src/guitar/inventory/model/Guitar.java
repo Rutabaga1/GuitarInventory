@@ -1,7 +1,7 @@
 package guitar.inventory.model;
 
 public class Guitar {
-	private String serialNumber;
+	private String series;
 	private String gType;//GuitarType的简写
 	private Double price;
 	private String gSize;
@@ -9,13 +9,6 @@ public class Guitar {
 	private String seller;
 	private int inventoryNum;//大于0表明仓库中有存货
 	
-	
-	public String getSerialNumber() {
-		return serialNumber;
-	}
-	public void setSerialNumber(String serialNumber) {
-		this.serialNumber = serialNumber;
-	}
 	
 	public Double getPrice() {
 		return price;
@@ -54,6 +47,12 @@ public class Guitar {
 	}
 	public void setInventoryNum(int inventoryNum) {
 		this.inventoryNum = inventoryNum;
+	}
+	public String getSeries() {
+		return series;
+	}
+	public void setSeries(String series) {
+		this.series = series;
 	}
 	
 }
